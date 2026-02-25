@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: quiz-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: quizdb
+      MYSQL_ROOT_PASSWORD: "@Nshi1409"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    image: quiz-backend
+    container_name: quiz-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/quizdb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: "@Nshi1409"
+
+volumes:
+  mysql_data:
