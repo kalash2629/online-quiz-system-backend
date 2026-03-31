@@ -17,4 +17,4 @@ Language: Java
 Database: MySQL (configurable)
 Security: Spring Security + JWT
 Build Tool: Maven
-Containerization: Docker & Docker Compose
+Containerization: Docker & Docker Compose.
